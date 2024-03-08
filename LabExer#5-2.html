@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Task #2: Exploring String Manipulation in JavaScript</title>
+</head>
+<body>
+  <h1>User Task #2: Exploring String Manipulation in JavaScript</h1>
+
+  <script>
+    // Prompt the user to input two strings
+    let firstString = prompt("Enter the first string:");
+    let secondString = prompt("Enter the second string:");
+
+    // Concatenate the prompted strings
+    let concatenatedString = firstString + secondString;
+
+    // Use string methods
+    let concatenatedStringLength = concatenatedString.length;
+    let upperCaseString = concatenatedString.toUpperCase();
+    let lowerCaseString = concatenatedString.toLowerCase();
+    let substringResult = concatenatedString.substring(0, 5); // Change the indices accordingly
+
+    // Perform string interpolation using template literals
+    let interpolationResult = `${firstString} is concatenated with ${secondString}`;
+
+    // Implement basic string comparison
+    let stringComparisonResult = (firstString === secondString) ? "Strings are equal" : "Strings are not equal";
+
+    // Use the split() method to divide a string into an array of substrings
+    let splitStringArray = concatenatedString.split(''); // You can specify a delimiter inside the split function
+
+    // Output results using console.log()
+    console.log("Concatenated String: ", concatenatedString);
+    console.log("Length of Concatenated String: ", concatenatedStringLength);
+    console.log("Uppercase String: ", upperCaseString);
+    console.log("Lowercase String: ", lowerCaseString);
+    console.log("Substring Result: ", substringResult);
+    console.log("String Interpolation: ", interpolationResult);
+    console.log("String Comparison: ", stringComparisonResult);
+    console.log("Split String Array: ", splitStringArray);
+  </script>
+</body>
+</html>

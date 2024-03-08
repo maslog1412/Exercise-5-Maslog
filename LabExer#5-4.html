@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Task #4: Creating a Password Strength Checker</title>
+</head>
+<body>
+  <h1>User Task #4: Creating a Password Strength Checker</h1>
+
+  <script>
+    // Prompt the user to input a password
+    let userPassword = prompt("Enter your password:");
+
+    // Define length and character type requirements
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(userPassword);
+    const hasLowerCase = /[a-z]/.test(userPassword);
+    const hasNumber = /\d/.test(userPassword);
+    const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(userPassword);
+
+    // Evaluate the length of the password and provide feedback
+    let lengthFeedback = (userPassword.length >= minLength) ? "Length is sufficient" : "Password should be at least 8 characters long";
+
+    // Check for the presence of uppercase letters, lowercase letters, numbers, and special characters
+    let characterFeedback = "";
+    if (!hasUpperCase) characterFeedback += "Missing uppercase letters. ";
+    if (!hasLowerCase) characterFeedback += "Missing lowercase letters. ";
+    if (!hasNumber) characterFeedback += "Missing numbers. ";
+    if (!hasSpecialChar) characterFeedback += "Missing special characters. ";
+
+    // Assign a strength rating based on criteria
+    let strengthRating = "Weak";
+    if (userPassword.length >= minLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar) {
+      strengthRating = "Strong";
+    } else if (userPassword.length >= minLength && (hasUpperCase || hasLowerCase || hasNumber || hasSpecialChar)) {
+      strengthRating = "Moderate";
+    }
+
+    // Display the strength rating and feedback message to the user
+    console.log("Password Strength: ", strengthRating);
+    console.log("Feedback: ");
+    console.log(lengthFeedback);
+    console.log(characterFeedback);
+  </script>
+</body>
+</html>

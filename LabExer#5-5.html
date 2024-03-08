@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Task #5: Implementing a Basic String Encryption Algorithm</title>
+</head>
+<body>
+  <h1>User Task #5: Implementing a Basic String Encryption Algorithm</h1>
+
+  <script>
+    // Prompt the user to input a string to be encrypted
+    let userInput = prompt("Enter a string to be encrypted:");
+
+    // Define the shift value for the Caesar Cipher
+    const shiftValue = 3; // You can adjust this value based on your preference
+
+    // Function to encrypt a given string using Caesar Cipher
+    function encryptString(input, shift) {
+      return input.split('').map(char => {
+        if (char.match(/[a-z]/i)) {
+          let code = char.charCodeAt(0);
+          if (char.match(/[a-z]/)) {
+            return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+          } else if (char.match(/[A-Z]/)) {
+            return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+          }
+        }
+        return char;
+      }).join('');
+    }
+
+    // Encrypt the input string and display the result
+    let encryptedString = encryptString(userInput, shiftValue);
+    console.log("Encrypted String: ", encryptedString);
+
+    // Function to decrypt a given string using Caesar Cipher
+    function decryptString(input, shift) {
+      return encryptString(input, 26 - shift); // Decryption is the same as encryption with the opposite shift
+    }
+
+    // Decrypt the encrypted string and display the result
+    let decryptedString = decryptString(encryptedString, shiftValue);
+    console.log("Decrypted String: ", decryptedString);
+  </script>
+</body>
+</html>

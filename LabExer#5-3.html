@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Task #3: Building a Simple Text Analyzer</title>
+</head>
+<body>
+  <h1>User Task #3: Building a Simple Text Analyzer</h1>
+
+  <script>
+    // Prompt the user to input a string of text
+    let userInput = prompt("Enter a string of text:");
+
+    // Count the number of characters, words, and sentences
+    let charCount = userInput.length;
+    let wordCount = userInput.split(/\s+/).filter(word => word.length > 0).length;
+    let sentenceCount = userInput.split(/[.!?]+/).filter(sentence => sentence.length > 0).length;
+
+    // Create an array of words from the input text
+    let wordsArray = userInput.split(/\s+/).filter(word => word.length > 0);
+
+    // Create an object to store word occurrences
+    let wordOccurrences = {};
+    wordsArray.forEach(word => {
+      wordOccurrences[word] = (wordOccurrences[word] || 0) + 1;
+    });
+
+    // Identify the most frequent word and display its occurrence count
+    let mostFrequentWord = Object.keys(wordOccurrences).reduce((a, b) => wordOccurrences[a] > wordOccurrences[b] ? a : b);
+    let mostFrequentWordCount = wordOccurrences[mostFrequentWord];
+
+    // Determine the average word length
+    let totalWordLength = wordsArray.reduce((acc, word) => acc + word.length, 0);
+    let averageWordLength = totalWordLength / wordCount;
+
+    // Output the analyzed results using console.log()
+    console.log("Number of Characters: ", charCount);
+    console.log("Number of Words: ", wordCount);
+    console.log("Number of Sentences: ", sentenceCount);
+    console.log("Most Frequent Word: ", mostFrequentWord, " with ", mostFrequentWordCount, " occurrences");
+    console.log("Average Word Length: ", averageWordLength.toFixed(2));
+  </script>
+</body>
+</html>
